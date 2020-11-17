@@ -1,0 +1,20 @@
+{
+  "visual": {
+    "name": "paraTimeline3.0.0",
+    "displayName": "paraTimeline 3.0.0",
+    "guid": "paraDateline9C512AAFFAD845FD99CC8BFC8EFF3952",
+    "visualClassName": "paraTimeline",
+    "version": "3.0.0",
+    "description": "The ParaTimeLine custom filter a reimagined and improved custom filter, based on the original Microsoft Timeline filter. This filter is slimmer and easy to place at the top or the bottom of the screen.",
+    "supportUrl": "https://paradigmbi.com.au/Contact",
+    "gitHubUrl": "https://github.com/Paradigm-BI/ParaTimeLine"
+  },
+  "author": {
+    "name": "Dmitry Vann",
+    "email": "dmitry@paradigmbi.com.au"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "capabilities": "capabilities.json"
+}
