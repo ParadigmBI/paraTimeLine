@@ -1,6 +1,6 @@
 {
   "name": "powerbi-visuals-paratimeline",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Timeline",
   "repository": {
     "type": "git",
@@ -14,9 +14,11 @@
     "pbiviz": "pbiviz",
     "start": "pbiviz start",
     "package": "pbiviz package",
-    "test": "karma start",
-    "watch": "karma start --single-run=false",
-    "lint": "tslint -r \"node_modules/tslint-microsoft-contrib\" \"+(src|test)/**/*.ts\""
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "pretest": "pbiviz package --resources --no-minify --no-pbiviz --no-plugin",
+    "test": "pbiviz package --resources --no-minify --no-pbiviz",
+    "cert": "pbiviz --install-cert",
+    "installcert": "pbiviz --install-cert"
   },
   "author": {
     "name": "Microsoft",

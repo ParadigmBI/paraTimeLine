@@ -654,12 +654,14 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         this.startDatePicker = this.datePickers.append("input")
             .attr("type", "date")
             .classed("dateRange", true)
-            .classed("startDate", true);
+            .classed("startDate", true)
+            .on("change", () => this.updateDate(this.startDatePicker, this.endDatePicker));
 
         this.endDatePicker = this.datePickers.append("input")
             .attr("type", "date")
             .classed("dateRange", true)
-            .classed("endDate", true);
+            .classed("endDate", true)
+            .on("change", () => this.updateDate(this.startDatePicker, this.endDatePicker));
 
         this.mainSvgSelection = this.mainSvgWrapperSelection
             .append("svg")
@@ -694,7 +696,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker)
+        this.updateDate(this.startDatePicker, this.endDatePicker);
     }
 
     public setThisYear(startDatePicker, endDatePicker) {
@@ -705,7 +707,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker)
+        this.updateDate(this.startDatePicker, this.endDatePicker);
     }
 
     public setLastMonth(startDatePicker, endDatePicker) {
@@ -716,7 +718,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker)
+        this.updateDate(this.startDatePicker, this.endDatePicker);
     }
 
     public setLastYear(startDatePicker, endDatePicker) {
@@ -727,7 +729,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker)
+        this.updateDate(this.startDatePicker, this.endDatePicker);
     }
 
     public setMTD(startDatePicker, endDatePicker) {
