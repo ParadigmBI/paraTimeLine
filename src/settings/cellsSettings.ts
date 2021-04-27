@@ -25,6 +25,7 @@
  */
 
 export class CellsSettings {
+    public show: boolean = true;
     public fillSelected: string = "#ADD8E6";
     public fillUnselected: string = "";
     public strokeColor: string = "#333444";
