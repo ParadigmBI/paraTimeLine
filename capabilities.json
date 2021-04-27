@@ -247,6 +247,13 @@
             "displayName": "Cells",
             "displayNameKey": "Visual_Cells",
             "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "displayNameKey": "Visual_Cell_Show",
+                    "type": {
+                        "bool": true
+                    }
+                },
                 "fillSelected": {
                     "displayName": "Selected cell color",
                     "displayNameKey": "Visual_Cell_SelectedColor",

@@ -101,6 +101,7 @@ import { TimelineDatePeriodBase } from "./datePeriod/TimelineDatePeriodBase";
 
 import { Calendar } from "./calendar";
 import { Utils } from "./utils";
+import { showBoth } from "powerbi-visuals-utils-chartutils/lib/axis/axisStyle";
 // import { Console } from "console";
 
 export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVisual {
@@ -374,7 +375,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
     private static DefaultRangeTextSelectionY: number = 40;
 
     private static ViewportWidthAdjustment: number = 2;
-    public static timeZone = "America/New_York";
+    public static timeZone = "America/Chicago";
 
     private static filterObjectProperty: { objectName: string, propertyName: string } = {
         objectName: "general",
@@ -690,8 +691,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setThisMonth(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -701,8 +702,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setThisYear(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -712,8 +713,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setLastMonth(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth() - 1;
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -723,8 +724,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setLastYear(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear() - 1, month = today.getMonth();
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -734,8 +735,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setMTD(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -744,8 +745,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setYTD(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
-        let endDate = new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone}));
+        let startDate = Utils.CTZ(startDatePicker.node().value);
+        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
@@ -781,11 +782,14 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         }
     }
 
+    public changeTimeZone(date) {
+        return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: "America/New_York"}));
+    }
 
     private updateDate(startDatePicker, endDatePicker) {
         this.applyDatePeriod(
-            new Date(new Date(startDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone})),
-            new Date(new Date(endDatePicker.node().value).toLocaleString("en-US", {timeZone: paraTimeline.timeZone})),
+            Utils.CTZ(startDatePicker.node().value),
+            Utils.CTZ(endDatePicker.node().value, false),
             this.timelineData.filterColumnTarget,
         );
     }
@@ -1505,6 +1509,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
                     this.svgWidth,
                 )),
             );
+        if (!timelineSettings.cells.show) this.mainSvgSelection.style("display", "none");
+        else this.mainSvgSelection.style("display", "block");
         let leftSpace = options.viewport.width - this.containerG.node().getBoundingClientRect().width - 30;
         this.mainSvgWrapperSelection.style("width", this.svgWidth < leftSpace ? this.svgWidth + "px" : leftSpace + "px");
 
