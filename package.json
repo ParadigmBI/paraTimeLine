@@ -4,7 +4,7 @@
   "description": "Timeline",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ParadigmBI/paraTimeLine"
   },
   "keywords": [
     "powerbi-visuals",
@@ -21,12 +21,12 @@
     "installcert": "pbiviz --install-cert"
   },
   "author": {
-    "name": "Microsoft",
-    "email": "pbicvsupport@microsoft.com"
+    "name": "Paradigm BI",
+    "email": "info@paradigmbi.com.au"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://michael1104smith.github.io"
+    "url": "https://paradigmbi.com.au/Contact"
   },
   "homepage": "",
   "devDependencies": {
