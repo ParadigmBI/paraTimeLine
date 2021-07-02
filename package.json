@@ -1,6 +1,6 @@
 {
   "name": "powerbi-visuals-paratimeline",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Timeline",
   "repository": {
     "type": "git",
@@ -44,7 +44,7 @@
     "jasmine": "^3.5.0",
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.4.1",
-    "karma": "^5.1.1",
+    "karma": "^6.3.2",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^2.1.0",
     "karma-jasmine": "^2.0.1",
@@ -53,7 +53,7 @@
     "karma-webpack": "^4.0.2",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "powerbi-visuals-api": "^2.6.1",
     "powerbi-visuals-tools": "^3.1.5",
     "powerbi-visuals-utils-testutils": "^2.2.1",
