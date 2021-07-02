@@ -656,12 +656,14 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
             .attr("type", "date")
             .classed("dateRange", true)
             .classed("startDate", true)
+            .attr("onkeydown", "return false")
             .on("change", () => this.updateDate(this.startDatePicker, this.endDatePicker));
 
         this.endDatePicker = this.datePickers.append("input")
             .attr("type", "date")
             .classed("dateRange", true)
             .classed("endDate", true)
+            .attr("onkeydown", "return false")
             .on("change", () => this.updateDate(this.startDatePicker, this.endDatePicker));
 
         this.mainSvgSelection = this.mainSvgWrapperSelection
@@ -1771,7 +1773,6 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
         this.drawAxisLinesAboveTimeline(labels, labelsElement, yIndex, isLast, averageOfDiff, diffBetweenId, lastIndex);
     }
-
 
     private drawAxisLinesAboveTimeline(labels, labelsElement, yIndex, isLast, averageOfDiff, diffBetweenId, lastIndex) {
         //Draw the lines to help demontrate the years
