@@ -979,6 +979,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
             this.host.colorPalette,
         );
 
+        $(".fbt button").css("color", this.settings.buttonEvent.fontColor).css("font-size", this.settings.buttonEvent.textSize);
+        $(".dateRange ").css("color", this.settings.dateRange.fontColor).css("font-size", this.settings.dateRange.textSize);
         this.update1();
         this.update2();
 
