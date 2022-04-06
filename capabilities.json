@@ -421,6 +421,48 @@
                 }
             }
         },
+        "buttonEvent": {
+            "displayName": "Button Event",
+            "properties": {
+                "fontColor": {
+                    "displayName": "Font color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "textSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
+        "dateRange": {
+            "displayName": "Date Range",
+            "properties": {
+                "fontColor": {
+                    "displayName": "Font color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "textSize": {
+                    "displayName": "Text Size",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        },
         "scrollAutoAdjustment": {
             "displayName": "Scroll position auto adjustment",
             "displayNameKey": "Visual_ScrollAutoAdjustment",
