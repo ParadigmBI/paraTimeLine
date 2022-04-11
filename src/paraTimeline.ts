@@ -695,7 +695,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
@@ -706,7 +706,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
@@ -717,7 +717,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear(), month = today.getMonth() - 1;
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
@@ -728,7 +728,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear() - 1, month = today.getMonth();
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
@@ -739,7 +739,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
@@ -749,7 +749,7 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
         let startDate = Utils.CTZ(startDatePicker.node().value);
         let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, 0, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
         startDatePicker.property("value", this.dateToString(firstDay));
         endDatePicker.property("value", this.dateToString(lastDay));
