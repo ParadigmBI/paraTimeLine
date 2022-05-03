@@ -796,6 +796,20 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
         );
     }
 
+    public getPreviousHour(date) {
+        const previous = new Date(date.getTime());
+        previous.setHours(date.getHours() - 1);
+      
+        return previous;
+    }
+
+    public getNextHour(date) {
+        const previous = new Date(date.getTime());
+        previous.setHours(date.getHours() + 12);
+      
+        return previous;
+    }
+
     public update1() {
         // it contains dates from data view.
         this.datePeriod = this.createDatePeriod(this.dataView);
@@ -915,8 +929,11 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
         //Set the value of the date pickers to be that closest and further date available
         if (filterDatePeriod && filterDatePeriod["startDate"] && filterDatePeriod["endDate"]) {
-            this.endDatePicker.node().value = this.getDateInDefaultFormat(filterDatePeriod["endDate"]);
-            this.startDatePicker.node().value = this.getDateInDefaultFormat(filterDatePeriod["startDate"]);
+            this.endDatePicker.node().value = this.getDateInDefaultFormat(this.getPreviousHour(filterDatePeriod["endDate"]));
+            this.startDatePicker.node().value = this.getDateInDefaultFormat(this.getNextHour(filterDatePeriod["startDate"]));
+            
+            // this.startDatePicker.property("value", this.dateToString(filterDatePeriod["startDate"]));
+            // this.endDatePicker.property("value", this.dateToString(filterDatePeriod["endDate"]));
         } else {
             this.startDatePicker.node().value = this.startDatePicker.node().defaultValue;
             this.endDatePicker.node().value = this.endDatePicker.node().defaultValue;
