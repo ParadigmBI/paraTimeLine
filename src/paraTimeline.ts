@@ -693,66 +693,56 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     public setThisMonth(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
-        let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker);
+        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let lastDay = new Date(Math.min(new Date(year, month + 1, 1).getTime(), this.datePeriod.endDate.getTime()));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public setThisYear(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
-        let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker);
+        let firstDay = new Date(Math.max(new Date(year, 1, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let lastDay = new Date(Math.min(new Date(year + 1, 1, 1).getTime(), this.datePeriod.endDate.getTime()));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public setLastMonth(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth() - 1;
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
-        let lastDay = new Date(Math.min(new Date(year, month + 1, 0).getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker);
+        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let lastDay = new Date(Math.min(new Date(year, month + 1, 1).getTime(), this.datePeriod.endDate.getTime()));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public setLastYear(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear() - 1, month = today.getMonth();
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
-        let lastDay = new Date(Math.min(new Date(year, 11, 31).getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
-        this.updateDate(this.startDatePicker, this.endDatePicker);
+        let firstDay = new Date(Math.max(new Date(year, 1, 1).getTime(), this.datePeriod.startDate.getTime()));
+        let lastDay = new Date(Math.min(new Date(year + 1, 1, 1).getTime(), this.datePeriod.endDate.getTime()));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public setMTD(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
-        let firstDay = new Date(Math.max(new Date(year, month, 0).getTime(), this.datePeriod.startDate.getTime()));
+        let firstDay = new Date(Math.max(new Date(year, month, 1).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public setYTD(startDatePicker, endDatePicker) {
         let today = new Date(), year = today.getFullYear(), month = today.getMonth();
-        let startDate = Utils.CTZ(startDatePicker.node().value);
-        let endDate = Utils.CTZ(endDatePicker.node().value, false);
         let firstDay = new Date(Math.max(new Date(year, 0, 0).getTime(), this.datePeriod.startDate.getTime()));
         let lastDay = new Date(Math.min(today.getTime(), this.datePeriod.endDate.getTime()));
-        startDatePicker.property("value", this.dateToString(firstDay));
-        endDatePicker.property("value", this.dateToString(lastDay));
+        this.applyDatePeriod(firstDay, lastDay, this.timelineData.filterColumnTarget);
+        startDatePicker.property("value", this.getDateInDefaultFormat(this.getNextHour(firstDay)));
+        endDatePicker.property("value", this.getDateInDefaultFormat(this.getPreviousHour(lastDay)));
     }
 
     public clearUserSelection(): void {
@@ -790,8 +780,8 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
 
     private updateDate(startDatePicker, endDatePicker) {
         this.applyDatePeriod(
-            Utils.CTZ(startDatePicker.node().value),
-            Utils.CTZ(endDatePicker.node().value, false),
+            new Date(startDatePicker.node().value),
+            this.getNextDay(new Date(endDatePicker.node().value)),
             this.timelineData.filterColumnTarget,
         );
     }
@@ -806,6 +796,13 @@ export class paraTimeline implements powerbiVisualsApi.extensibility.visual.IVis
     public getNextHour(date) {
         const previous = new Date(date.getTime());
         previous.setHours(date.getHours() + 12);
+      
+        return previous;
+    }
+
+    public getNextDay(date) {
+        const previous = new Date(date.getTime());
+        previous.setDate(date.getDate() + 1);
       
         return previous;
     }
