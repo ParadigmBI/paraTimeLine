@@ -125,13 +125,6 @@ export class Utils {
             date.getDate());
     }
 
-    public static CTZ(date, se=true) {
-        let dt = new Date(date);
-        if (se) return new Date(dt.setHours(dt.getHours() + 7));
-        return new Date(dt.setHours(dt.getHours() + 7));
-        return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: "America/New_York"}));
-    }
-
     public static GETDATEPRIOD(values: any[]): ITimelineDatePeriodBase {
         let startDate: Date;
         let endDate: Date;
